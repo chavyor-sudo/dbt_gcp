@@ -40,6 +40,6 @@ select
     {{ convert_usd_to_ils('o.total_amount_spent_usd') }} as total_amount_spent_ils,
     
     o.last_order_date
-from users u
+    from users u
 left join address_with_regions a on u.user_id = a.user_id
 left join orders_aggregated o on u.user_id = o.user_id
