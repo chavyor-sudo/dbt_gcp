@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_users
+
+    description: "table inclide all order "
+    tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "regexp_contains(email, r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')"
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "user_id > 0"
+    columns:
+          - name: user_id
+            description: "The unique identifier for each user."
+            tests:
+              - unique
+              - not_null
+              
+          - name: user_name 
+            description: "The name of the user."
+            tests:
+              - not_null
+          - name: email
+            description: "The email address of the user."
+            tests:
+              - not_null
+            

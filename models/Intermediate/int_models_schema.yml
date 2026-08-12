@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_users
+    description: "Intermediate users table - Full refresh"
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+
+  - name: int_addresses
+    description: "Intermediate addresses table - Incremental upsert"
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_users')
+                field: user_id
+
+  - name: int_orders
+    description: "Intermediate orders table - Incremental append only"
+    tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "amount >= 0"
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_users')
+                field: user_id

@@ -1,0 +1,8 @@
+version: 2
+seeds:
+  - name: region_mapping
+    columns:
+      - name: city
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_customer_360
+    description: "The final Customer 360 table consolidating users, addresses, and order metrics."
+    tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "total_amount_spent_ils  >= 0"
+    columns:
+      - name: user_id
+        description: "The unique identifier for the customer."
+        tests:
+          - unique
+          - not_null
+      - name: email
+        tests:
+          - not_null

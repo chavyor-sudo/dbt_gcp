@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_address
+    description: "table inclide all order "
+    columns:
+        
+          - name: user_id
+            description: "The unique identifier for each user."
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: source('raw_data', 'users')
+                    field: user_id
+          - name: city
+            description: "The city of the user's address."
+            tests:
+              - not_null
+
