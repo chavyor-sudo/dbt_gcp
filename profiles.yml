@@ -1,0 +1,10 @@
+dbt_gcp:
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: cblab-505208
+      dataset: dbt_dev
+      threads: 4
+      timeout_seconds: 300
+  target: dev
