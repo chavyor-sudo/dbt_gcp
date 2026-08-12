@@ -4,7 +4,7 @@ dbt_gcp:
       type: bigquery
       method: oauth
       project: cblab-505208
-      dataset: dbt_dev
+      dataset: dbt_chavyorsudo
       threads: 4
       timeout_seconds: 300
   target: dev

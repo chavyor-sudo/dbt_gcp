@@ -7,3 +7,4 @@ dbt_internal_packages/
 *.json
 *.duckdb
 *.duckdb.wal
+dbt.exe
