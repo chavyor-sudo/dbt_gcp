@@ -3,9 +3,9 @@ version: 2
 sources:
   - name: raw_data 
     database: cblab-505208   
-    schema: raw_data 
+    schema: raw_data
     tables:
-    
+
       - name: users
         description: "Raw users table uploaded from CSV"
         columns:
@@ -42,7 +42,8 @@ sources:
               - not_null
 
       - name: address
-        description: "Raw addresses table uploaded from CSV"
+        description: "Raw addresses table uploaded from "  
+
         columns:
           - name: user_id
             tests:
@@ -54,3 +55,4 @@ sources:
           - name : city 
             tests:
               - not_null
+        
