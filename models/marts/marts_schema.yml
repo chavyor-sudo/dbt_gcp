@@ -6,7 +6,7 @@ models:
     tests:
       - dbt_utils.expression_is_true:
           arguments:
-            expression: "total_amount_spent_ils  >= 0"
+            expression: "total_amount_spent_usd  >= 0"
     columns:
       - name: user_id
         description: "The unique identifier for the customer."
