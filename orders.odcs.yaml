@@ -1,18 +1,17 @@
 dataContractSpecification: "3.0.0"
 id: "bronze-orders-contract"
-name: "Bronze Orders"
 version: "1.0.0"
-status: "active"
 
 info:
   title: "Bronze Orders Data Contract"
+  version: "1.0.0"
   description: "Data contract defining bronze orders structure"
   owner: "chavy-team"
 
 models:
   stg_order:
     type: "table"
-    description: "Orders preparation table"
+    description: "Bronze managed table under contract protection"
     fields:
       order_id:
         type: "string"
@@ -21,13 +20,9 @@ models:
         unique: true
       user_id:
         type: "string"
-        description: "User identifier"
+        description: "User reference"
         required: true
       amount:
         type: "number"
-        description: "Total order amount"
+        description: "Total amount"
         required: true
-
-servers:
-  production:
-    type: "bigquery"
