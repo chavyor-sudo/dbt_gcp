@@ -1,4 +1,4 @@
-dataContractSpecification: "3.0.0"
+datacontract: "3.0.0"
 id: "bronze-orders-contract"
 version: "1.0.0"
 
