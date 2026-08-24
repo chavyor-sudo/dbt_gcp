@@ -1,7 +1,8 @@
-dataContractSpecification: "3.0.2" # הגרסה העדכנית של התקן
-kind: DataContract                 # <--- השדה הקריטי שהיה חסר והכשיל את הריצה!
+dataContractSpecification: "3.0.0"
 id: "bronze-orders-contract"
+name: "Bronze Orders"
 version: "1.0.0"
+status: "active"
 
 info:
   title: "Bronze Orders Data Contract"
@@ -10,15 +11,23 @@ info:
 
 models:
   stg_order:
-    type: table
+    type: "table"
+    description: "Orders preparation table"
     fields:
       order_id:
-        type: string
+        type: "string"
+        description: "Primary key"
         required: true
-        primary: true
+        unique: true
       user_id:
-        type: string
+        type: "string"
+        description: "User identifier"
         required: true
       amount:
-        type: number
+        type: "number"
+        description: "Total order amount"
         required: true
+
+servers:
+  production:
+    type: "bigquery"
