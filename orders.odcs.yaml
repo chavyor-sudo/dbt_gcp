@@ -1,0 +1,28 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: bronze-orders-contract
+name: Bronze Orders
+version: 1.0.0
+status: active
+
+description:
+  purpose: "Provides verified bronze order data for analytics and reporting"
+
+schema:
+  - name: stg_order
+    physicalType: TABLE
+    description: "Bronze managed table under contract protection"
+    properties:
+      - name: order_id
+        logicalType: string
+        description: "Primary key"
+        required: true
+        unique: true
+      - name: user_id
+        logicalType: string
+        description: "User reference"
+        required: true
+      - name: amount
+        logicalType: number
+        description: "Total transaction amount"
+        required: true
