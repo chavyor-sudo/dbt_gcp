@@ -2,10 +2,9 @@ version: 2
 
 sources:
   - name: raw_data 
-    database: cblab-505208   
-    schema: raw_data
+    database: "{{ 'cblab-prod' if target.name == 'production' else 'cblab-505208' }}"   
+    schema: "{{ 'prod_raw_data' if target.name == 'production' else 'raw_data' }}"
     tables:
-
       - name: users
         description: "Raw users table uploaded from CSV"
         columns:
