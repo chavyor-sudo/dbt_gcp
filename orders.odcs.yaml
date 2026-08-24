@@ -1,29 +1,21 @@
-odcs: "3.0.0" 
-id: "bronze-orders-contract"
-name: "Bronze Orders Contract"
-version: "1.0.0"
-
+dataContractSpecification: 1.1.0
+id: bronze-orders-contract
 info:
-  title: "Bronze Orders Data Contract"
-  version: "1.0.0"
-  description: "Data contract defining bronze orders structure"
-  owner: "chavy-team"
-
+  title: Bronze Orders Data Contract
+  version: 1.0.0
+servers:
+  production:
+    type: bigquery
 models:
   stg_order:
-    type: "table"
-    description: "Bronze managed table under contract protection"
+    type: table
     fields:
       order_id:
-        type: "string"
-        description: "Primary key"
+        type: string
         required: true
         unique: true
       user_id:
-        type: "string"
-        description: "User reference"
+        type: string
         required: true
       amount:
-        type: "number"
-        description: "Total amount"
-        required: true
+        type: decimal
