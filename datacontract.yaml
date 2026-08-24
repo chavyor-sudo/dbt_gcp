@@ -1,27 +1,23 @@
 dataContractSpecification: "https://datacontract.com"
-id: "bronze_orders_contract"
+id: "bronze-orders-contract"
 version: "1.0.0"
 
 info:
   title: "Bronze Orders Data Contract"
-  description: "data contarct Bronze"
-  owner: "chavy_team"
+  description: "Data contract defining bronze orders structure"
+  owner: "chavy-team"
 
 models:
   stg_order:
-    description: "stg _ordser fro bronze"
     type: table
     fields:
       order_id:
         type: string
-        description: "unique to order id"
         required: true
-        unique: true
+        primary: true
       user_id:
         type: string
-        description: " user id to orser id   "
         required: true
       amount:
         type: number
-        description: " sum amount  " 
         required: true

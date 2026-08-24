@@ -5,23 +5,20 @@ on:
     branches:
       - main
     paths:
-      - 'datacontract.yaml' # האוטומציה תתעורר רק אם קובץ החוזה הזה ישתנה
+      - 'datacontract.yaml'
 
 jobs:
   sync_contracts:
     runs-on: ubuntu-latest
     steps:
-      # 1. משיכת הקוד של הפרויקט לתוך השרת הווירטואלי של GitHub
       - name: Checkout Code Base
         uses: actions/checkout@v4
 
-      # 2. הרמת סביבת פייתון בשרת
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      # 3. התקנת כלי החוזים החיצוני (CLI)
       - name: Install Datacontract CLI
         run: pip install datacontract-cli
 
