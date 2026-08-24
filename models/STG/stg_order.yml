@@ -9,7 +9,7 @@ models:
             expression: "amount >= 0"
     columns:
       - name: order_id
-        description: "Primary key"
+        description: "Primary key order id"
         data_tests:
           - unique:
               config:

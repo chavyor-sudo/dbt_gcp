@@ -15,7 +15,7 @@ schema:
     properties:
       - name: order_id
         logicalType: string
-        description: "Primary key"
+        description: "Primary key order id"
         required: true
         unique: true
       - name: user_id
