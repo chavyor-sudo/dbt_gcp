@@ -1,11 +1,9 @@
-dataContractSpecification: "https://datacontract.com"
-id: "bronze-orders-contract"
-version: "1.0.0"
-
+dataContractSpecification: "2.2.0" # שימוש במספר גרסה ישיר במקום קישור URL מלא
+id: bronze-orders-contract
+version: 1.0.0
 info:
-  title: "Bronze Orders Data Contract"
-  description: "Data contract defining bronze orders structure"
-  owner: "chavy-team"
+  title: Bronze Orders Data Contract
+  owner: chavy-team
 
 models:
   stg_order:
@@ -14,10 +12,10 @@ models:
       order_id:
         type: string
         required: true
-        primary: true
+        unique: true
       user_id:
         type: string
         required: true
       amount:
-        type: number
+        type: float
         required: true
