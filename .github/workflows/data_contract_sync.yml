@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'datacontract.yaml'
+      - 'orders.odcs.yaml'
 
 jobs:
   sync_contracts:
