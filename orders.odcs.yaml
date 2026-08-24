@@ -1,21 +1,28 @@
-dataContractSpecification: 1.1.0
+apiVersion: v3.1.0
+kind: DataContract
 id: bronze-orders-contract
-info:
-  title: Bronze Orders Data Contract
-  version: 1.0.0
-servers:
-  production:
-    type: bigquery
-models:
-  stg_order:
-    type: table
-    fields:
-      order_id:
-        type: string
+name: Bronze Orders
+version: 1.0.0
+status: active
+
+description:
+  purpose: "Provides verified bronze order data for analytics and reporting"
+
+schema:
+  - name: stg_order
+    physicalType: TABLE
+    description: "Bronze managed table under contract protection"
+    properties:
+      - name: order_id
+        logicalType: string
+        description: "Primary key"
         required: true
         unique: true
-      user_id:
-        type: string
+      - name: user_id
+        logicalType: string
+        description: "User reference"
         required: true
-      amount:
-        type: decimal
+      - name: amount
+        logicalType: number
+        description: "Total transaction amount"
+        required: true
