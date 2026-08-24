@@ -1,5 +1,6 @@
-datacontract: "3.0.0"
+odcs: "3.0.0" 
 id: "bronze-orders-contract"
+name: "Bronze Orders Contract"
 version: "1.0.0"
 
 info:
