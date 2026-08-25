@@ -1,19 +1,8 @@
 version: 2
-models:
-- name: raw_data
-  config:
-    meta:
-      data_contract: bronze-orders-contract
-  columns:
-  - name: order
-    data_tests:
-    - dbt_expectations.dbt_expectations.expect_column_values_to_be_of_type:
-        column_type: null
 
-<<<<<<< HEAD
 sources:
-  - name: raw_data 
-    database: "{{ 'cblab-prod' if target.name == 'production' else 'cblab-505208' }}"   
+  - name: raw_data
+    database: "{{ 'cblab-prod' if target.name == 'production' else 'cblab-505208' }}"
     schema: "{{ 'prod_raw_data' if target.name == 'production' else 'raw_data' }}"
     tables:
       - name: users
@@ -29,7 +18,7 @@ sources:
           - name: email
             tests:
               - not_null
-             
+
       - name: order
         description: "Raw orders table uploaded from CSV"
         columns:
@@ -52,7 +41,7 @@ sources:
               - not_null
 
       - name: address
-        description: "Raw addresses table uploaded from "  
+        description: "Raw addresses table uploaded from "
 
         columns:
           - name: user_id
@@ -62,9 +51,6 @@ sources:
                   arguments:
                     to: source('raw_data', 'users')
                     field: user_id
-          - name : city 
+          - name: city
             tests:
               - not_null
-        
-=======
->>>>>>> 4181895bc21d1017a40c4704f5ec9b6ee139f0f3
