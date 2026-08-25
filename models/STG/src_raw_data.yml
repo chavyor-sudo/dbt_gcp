@@ -37,3 +37,30 @@ sources:
       data_type: NUMBER
       description: Total transaction amount
 
+version: 2
+sources:
+- name: bronze-orders-contract
+  meta:
+    owner: chavy-team
+  description: Data contract defining bronze orders structure
+  tables:
+  - name: stg_order
+    description: Bronze managed table under contract protection
+    columns:
+    - name: order_id
+      data_tests:
+      - not_null
+      - unique
+      data_type: STRING
+      description: Primary key order id
+    - name: user_id
+      data_tests:
+      - not_null
+      data_type: STRING
+      description: User reference
+    - name: amount
+      data_tests:
+      - not_null
+      data_type: NUMBER
+      description: Total transaction amount
+
