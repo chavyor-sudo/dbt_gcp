@@ -1,32 +1,32 @@
-apiVersion: v3.1.0
-kind: DataContract
-id: bronze-orders-contract
-name: Bronze Orders
-version: 1.0.0
-status: active
+apiVersion: "v3.1.0"
+kind: "DataContract"
+id: "bronze-orders-contract"
+name: "Bronze Orders"
+version: "1.0.0"
+status: "active"
 
 description:
   purpose: "Provides verified bronze order data for analytics and reporting"
 
 schema:
-  - name: stg_order
-    physicalType: TABLE
-    description: "Bronze managed table under contract protection"
+  - name: "raw_data"
+    type: "source"
     properties:
-      - name: order_id
-        logicalType: string
-        description: "Primary key order id"
-        required: true
-        unique: true
-      - name: user_id
-        logicalType: string
-        description: "User reference"
-        required: true
-      - name: amount
-        logicalType: number
-        description: "Total transaction amount"
-        required: true
-        quality:
-          - type: expression
-            expression: "amount >= 0"
-            description: "big >0"
+      - name: "orders"
+        type: "table"
+        properties:
+          - name: "order_id"
+            logicalType: "string"
+            required: true
+            unique: true
+          - name: "user_id"
+            logicalType: "string"
+            required: true
+          - name: "amount"
+            logicalType: "number"
+            required: true
+
+    checks:
+      - type: "custom"
+        expression: "amount >= 0"
+        description: "Verify that raw source rows have no negative amounts"
