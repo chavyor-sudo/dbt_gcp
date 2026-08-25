@@ -13,7 +13,6 @@ servers:
     type: "bigquery"
     project: "cblab-505208"
     dataset: "raw_data"
-
 schema:
   - name: "order"
     physicalType: TABLE
