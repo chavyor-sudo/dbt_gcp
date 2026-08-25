@@ -28,7 +28,7 @@ jobs:
 
       - name: Overwrite dbt Source from ODCS
         run: |
-          datacontract export dbt odcs/orders.odcs.yaml --export-type sources > models/STG/src_raw_data_test.yml
+          datacontract export dbt-sources odcs/orders.odcs.yaml > models/STG/src_raw_data_test.yml
           
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
