@@ -9,10 +9,10 @@ description:
   purpose: "Provides verified bronze order data for analytics and reporting"
 
 schema:
-  - name: "raw_data"        
-    type: "source"          
+  - name: "raw_data"
+    type: "source"
     properties:
-      - name: "orders"      
+      - name: "orders"
         type: "table"
         properties:
           - name: "order_id"
@@ -26,8 +26,8 @@ schema:
             logicalType: "number"
             required: true
 
-quality:
+assertions:
   - type: "sql"
     query: "SELECT COUNT(*) FROM cblab-505208.raw_data.orders WHERE amount < 0"
     mustBe: 0
-    description: "Verify that raw source source rows have no negative amounts"
+    description: "Verify that raw source rows have no negative amounts"
