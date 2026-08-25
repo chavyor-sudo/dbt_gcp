@@ -12,7 +12,7 @@ schema:
   - name: "raw_data"
     type: "source"
     properties:
-      - name: "order"      # תוקן: לשון יחיד (order) כדי שיתאים ב-100% לקובץ ה-Source שלך!
+      - name: "order"      
         type: "table"
         properties:
           - name: "order_id"
@@ -29,4 +29,4 @@ schema:
     checks:
       - type: "custom"
         expression: "amount >= 0"
-        description: "Verify that raw source rows have no negative amounts"
+        description: "Verify that a raw source rows have no negative amounts"
