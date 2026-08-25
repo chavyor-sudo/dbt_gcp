@@ -6,15 +6,14 @@ version: "1.0.0"
 status: "active"
 
 description:
-  purpose: "Provides verified  bronze order data for analytics and reporting"
+  purpose: "Provides verified bronze order data for analytics and reporting"
 
 schema:
-  - name: "raw_data"
-    type: "source"
-    properties:
+  - name: "raw_data" 
+    tables:
       - name: "order"
-        type: "table"
-        properties:
+        description: "Bronze managed table under contract protection"
+        columns:
           - name: "order_id"
             logicalType: "string"
             required: true
@@ -23,5 +22,5 @@ schema:
             logicalType: "string"
             required: true
           - name: "amount"
-            logicalType: "number" 
+            logicalType: "number"
             required: true
