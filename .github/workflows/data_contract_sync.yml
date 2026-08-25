@@ -23,12 +23,14 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Datacontract CLI
-        run: pip install datacontract-cli
+      - name: Install Datacontract CLI with dbt support
+        # התקנת ה-CLI יחד עם התוספים הייעודיים ל-dbt לקבלת תמיכה מלאה
+        run: pip install "datacontract-cli[dbt]"
 
       - name: Generate dbt Assets from ODCS
         run: |
-          datacontract dbt sync odcs/orders.odcs.yaml --target models/STG/
+      
+          datacontract dbt sync odcs/orders.odcs.yaml --target models/STG/src_raw_data.yml
 
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5

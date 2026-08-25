@@ -20,7 +20,7 @@ schema:
         unique: true
       - name: "user_id"
         logicalType: "string"
-        description: "User THE reference"
+        description: "User  reference"
         required: true
       - name: "amount"
         logicalType: "number"
