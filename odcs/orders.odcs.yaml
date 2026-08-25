@@ -23,5 +23,5 @@ schema:
             logicalType: "string"
             required: true
           - name: "amount"
-            logicalType: "number"
+            logicalType: "float" # תוקן: סוג נתונים תקני ש-dbt sync יודע לתרגם!
             required: true
