@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: raw_data
-    database: "{{ 'cblab-prod' if target.name == 'production' else 'cblab-505208' }}"
+  - name: raw_data 
+    database: "{{ 'cblab-prod' if target.name == 'production' else 'cblab-505208' }}"   
     schema: "{{ 'prod_raw_data' if target.name == 'production' else 'raw_data' }}"
     tables:
       - name: users
@@ -18,11 +18,30 @@ sources:
           - name: email
             tests:
               - not_null
-
-
+             
+      - name: order
+        description: "Raw orders table uploaded from CSV"
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+          - name: user_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: source('raw_data', 'users')
+                    field: user_id
+          - name: amount
+            tests:
+              - not_null
+          - name: date
+            tests:
+              - not_null
 
       - name: address
-        description: "Raw addresses table uploaded from "
+        description: "Raw addresses table uploaded from "  
 
         columns:
           - name: user_id
@@ -32,6 +51,7 @@ sources:
                   arguments:
                     to: source('raw_data', 'users')
                     field: user_id
-          - name: city
+          - name : city 
             tests:
               - not_null
+        
