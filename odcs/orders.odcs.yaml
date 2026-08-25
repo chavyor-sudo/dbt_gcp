@@ -29,4 +29,4 @@ schema:
     checks:
       - type: "custom"
         expression: "amount >= 0"
-        description: "Verify that a thkjhkj raw source rows have no negative amounts"
+        description: "Verify that a  raw source rows have no negative amounts"
