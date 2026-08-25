@@ -23,10 +23,8 @@ jobs:
         run: pip install datacontract-cli
 
       - name: Generate dbt Assets from ODCS
-        run: |
-          for contract in odcs/*.yaml; do
-            datacontract dbt sync "$contract" --target models/STG/src_raw_data.yml
-          done
+        run: | 
+            datacontract dbt sync odcs/orders.odcs.yaml
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
