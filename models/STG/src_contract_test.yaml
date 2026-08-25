@@ -1,8 +1,0 @@
-version: 2
-sources:
-- name: bronze-orders-contract
-  meta:
-    owner: chavy-team
-  description: Provides verified bronze order data for analytics and reporting
-  tables: []
-
