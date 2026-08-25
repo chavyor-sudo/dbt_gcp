@@ -2,7 +2,6 @@ version: 2
 
 models:
   - name: stg_order
-    description: "Bronze managed table under contract protection"
     tests:
       - dbt_utils.expression_is_true:
           arguments:
@@ -15,37 +14,11 @@ models:
               config:
                 warn_if: ">5"
                 error_if: ">20"
-                meta:
-                  datacontract_cli:
-                    include_in_tests: true
-                    check: stg_order__order_id__field_unique
-                    contract_versions:
-                      - 1.0.0
-                    generated: false
-              description: Check that field order_id has no duplicate values
-          - not_null:
-              description: Check that field order_id has no missing values
-              config:
-                meta:
-                  datacontract_cli:
-                    include_in_tests: true
-                    check: stg_order__order_id__field_required
-                    contract_versions:
-                      - 1.0.0
-                    generated: false
+          - not_null
       - name: user_id
         description: "User reference"
         data_tests:
-          - not_null:
-              description: Check that field user_id has no missing values
-              config:
-                meta:
-                  datacontract_cli:
-                    include_in_tests: true
-                    check: stg_order__user_id__field_required
-                    contract_versions:
-                      - 1.0.0
-                    generated: false
+          - not_null
           - relationships:
               arguments:
                 to: source('raw_data', 'users')
@@ -54,22 +27,9 @@ models:
       - name: amount
         description: "Total transaction amount"
         data_tests:
-          - not_null:
-              description: Check that field amount has no missing values
-              config:
-                meta:
-                  datacontract_cli:
-                    include_in_tests: true
-                    check: stg_order__amount__field_required
-                    contract_versions:
-                      - 1.0.0
-                    generated: false
+          - not_null
           - assert_column_is_positive
       - name: date
         description: "The timestamp when the order was placed."
         tests:
           - not_null
-    config:
-      meta:
-        datacontract_cli:
-          contract_id: bronze-orders-contract
