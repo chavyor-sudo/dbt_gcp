@@ -13,10 +13,11 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-
     steps:
       - name: Checkout Code Base
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,12 +27,12 @@ jobs:
       - name: Install Datacontract CLI
         run: pip install datacontract-cli
 
-      - name: Overwrite dbt Source from ODCS
+      - name: Generate dbt Sources from ODCS
         run: |
-          datacontract export dbt-sources odcs/orders.odcs.yaml > models/STG/src_raw_data_test.yml
-          
+          datacontract export dbt-sources odcs/orders.odcs.yaml --server bigquery --output models/STG/bronze_orders_contract.sources.yml
+
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: automated dbt source regeneration from ODCS"
-          file_pattern: 'models/STG/src_raw_data_test.yml'
+          commit_message: "chore: automated dbt schema compilation from ODCS"
+          file_pattern: 'models/**/*'
