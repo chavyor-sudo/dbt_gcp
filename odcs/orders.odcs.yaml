@@ -5,9 +5,6 @@ name: "Bronze Orders"
 version: "1.0.0"
 status: "active"
 
-description:
-  purpose: "Provides verified bronze order data for analytics and reporting"
-
 schema:
   - name: "raw_data"
     type: "source"
@@ -25,10 +22,8 @@ schema:
           - name: "amount"
             logicalType: "number"
             required: true
-            
-            # הדרך הנכונה להזריק בדיקת SQL ישירות לעמודה שסנכרון ה-dbt מבין!
-            tests:
-              - type: "dbt_utils.expression_is_true"
-                arguments:
-                  expression: "amount >= 0"
-                description: "Verify that raw source rows have no negative amounts"
+
+        checks:
+          - type: "custom"
+            expression: "amount >= 0"
+            description: "Verify that raw source rows have no negative amounts"
