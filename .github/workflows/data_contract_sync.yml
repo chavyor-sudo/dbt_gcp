@@ -30,8 +30,8 @@ jobs:
         run: | 
           datacontract dbt sync odcs/orders.odcs.yaml
         env:
-          DATACONTRACT_DBT_SOURCES_PATH: "models/STG/src_raw_data.yml"
-
+          DATACONTRACT_DBT_SOURCES_PATH: "models/STG/src_data_contract_orders.yml"
+          
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

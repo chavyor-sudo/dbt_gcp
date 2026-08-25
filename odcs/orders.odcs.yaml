@@ -6,7 +6,7 @@ version: "1.0.0"
 status: "active"
 
 description:
-  purpose: "Provides verified bronze order data for analytics and reporting"
+  purpose: "Provides verified hkj bronze order data for analytics and reporting"
 
 schema:
   - name: "raw_data"
@@ -23,5 +23,5 @@ schema:
             logicalType: "string"
             required: true
           - name: "amount"
-            logicalType: "number" # תוקן: סוג נתונים תקני ש-dbt sync יודע לתרגם!
+            logicalType: "number" 
             required: true

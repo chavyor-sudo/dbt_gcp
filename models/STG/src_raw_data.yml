@@ -33,7 +33,9 @@ sources:
                   arguments:
                     to: source('raw_data', 'users')
                     field: user_id
-
+          - name: amount
+            tests:
+              - not_null
           - name: date
             tests:
               - not_null
