@@ -22,13 +22,11 @@ jobs:
       - name: Install Datacontract CLI
         run: pip install datacontract-cli
 
-      # 4. הרצת הסנכרון - הזרקת חוקי החוזה אוטומטית אל קבצי ה-YAML של dbt
       - name: Generate dbt Assets from ODCS
         run: |
           for contract in odcs/*.yaml; do
-            datacontract dbt sync "$contract"
+            datacontract dbt sync "$contract" --target models/STG/src_raw_data.yml
           done
-      # 5. דחיפה (Push) אוטומטית של קבצי ה-dbt המעודכנים בחזרה לתוך ה-PR ב-Git
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
