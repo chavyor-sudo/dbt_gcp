@@ -13,7 +13,7 @@ sources:
       - not_null
       - unique
       data_type: STRING
-      description: Primary key order id
+      description: Primary and key order id
     - name: user_id
       data_tests:
       - not_null
