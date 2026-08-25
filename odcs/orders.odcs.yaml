@@ -1,26 +1,27 @@
-apiVersion: "v3.1.0"
-kind: "DataContract"
+datacontract: "3.0.0" # הגרסה שה-CLI מבין הכי טוב בסנכרון dbt
 id: "bronze-orders-contract"
-name: "Bronze Orders"
 version: "1.0.0"
-status: "active"
 
-description:
-  purpose: "Provides verified bronze order data for analytics and reporting"
+info:
+  title: "Bronze Orders Data Contract"
+  description: "Provides verified bronze order data for analytics and reporting"
+  owner: "chavy-team"
 
-schema:
-  - name: "raw_data" 
-    tables:
-      - name: "order"
-        description: "Bronze managed table under contract protection"
-        columns:
-          - name: "order_id"
-            logicalType: "string"
-            required: true
-            unique: true
-          - name: "user_id"
-            logicalType: "string"
-            required: true
-          - name: "amount"
-            logicalType: "number"
-            required: true
+models:
+  order: 
+    type: "table"
+    description: "Bronze managed table under contract protection"
+    fields:
+      order_id:
+        type: "string"
+        description: "Primary key order id"
+        required: true
+        unique: true
+      user_id:
+        type: "string"
+        description: "User reference"
+        required: true
+      amount:
+        type: "number"
+        description: "Total transaction amount"
+        required: true
