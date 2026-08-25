@@ -30,4 +30,4 @@ models:
     quality:
       - type: "custom"
         expression: "amount >= 0"
-        description: "Verify that the order amount is not negative"
+        description: "Verify that  order amount is not negative"
