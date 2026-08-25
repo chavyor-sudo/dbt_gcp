@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'orders.odcs.yaml'
+      - 'odcs/**.yaml''
 
 jobs:
   sync_contracts:
@@ -25,7 +25,9 @@ jobs:
       # 4. הרצת הסנכרון - הזרקת חוקי החוזה אוטומטית אל קבצי ה-YAML של dbt
       - name: Generate dbt Assets from ODCS
         run: |
-            datacontract dbt sync orders.odcs.yaml
+          for contract in odcs/*.yaml; do
+            datacontract dbt sync "$contract"
+          done
       # 5. דחיפה (Push) אוטומטית של קבצי ה-dbt המעודכנים בחזרה לתוך ה-PR ב-Git
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
