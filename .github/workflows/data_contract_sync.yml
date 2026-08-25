@@ -25,7 +25,7 @@ jobs:
       - name: Generate dbt Assets from ODCS
         run: |
           for contract in odcs/*.yaml; do
-            datacontract dbt sync "$contract" --target models/STG/src_raw_data.yml
+            datacontract export --format dbt "$contract" > models/STG/src_raw_data.yml
           done
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
