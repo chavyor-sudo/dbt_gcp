@@ -25,12 +25,11 @@ jobs:
       - name: Install Datacontract CLI
         run: pip install datacontract-cli
 
-      # 4. יצוא ישיר של החוזה לקובץ בדיקה חדש עם סיומת .yaml קשיחה
       - name: Generate dbt Assets from ODCS
         run: | 
-          datacontract export dbt-sources odcs/orders.odcs.yaml > models/STG/src_contract_test.yaml
+          datacontract dbt sync odcs/orders.odcs.yaml
 
-      # 5. דחיפה חזרה ל-Git - תוקן לעקוב אחרי כל שינוי בתיקיית models ללא חסימות סיומת!
+
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

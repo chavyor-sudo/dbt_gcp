@@ -1,29 +1,28 @@
-datacontract: "3.0.0"
+apiVersion: "v3.1.0"
+kind: "DataContract"
 id: "bronze-orders-contract"
+name: "Bronze Orders"
 version: "1.0.0"
+status: "active"
 
-info:
-  title: "Bronze Orders Data Contract"
-  description: "Provides verified bronze order data for analytics and reporting"
-  owner: "chavy-team"
+description:
+  purpose: "Provides verified bronze order data for analytics and reporting"
 
-sources:
-  raw_data: # שם ה-Source המדויק שקוד ה-SQL שלך מחפש!
-    description: "Raw source database zone"
-    tables:
-      order: # שם הטבלה האמיתית שלכם
-        description: "Bronze managed table under contract protection"
-        columns:
-          order_id:
-            type: "string"
-            description: "Primary key order id"
-            required: true
-            unique: true
-          user_id:
-            type: "string"
-            description: "User reference"
-            required: true
-          amount:
-            type: "number"
-            description: "Total transaction amount"
-            required: true
+schema:
+  - name: "source:raw_data.order" 
+    physicalType: TABLE
+    description: "Bronze managed source table under contract protection"
+    properties:
+      - name: "order_id"
+        logicalType: "string"
+        description: "Primary key order id"
+        required: true
+        unique: true
+      - name: "user_id"
+        logicalType: "string"
+        description: "User reference"
+        required: true
+      - name: "amount"
+        logicalType: "number"
+        description: "Total transaction amount"
+        required: true
