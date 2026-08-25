@@ -26,3 +26,7 @@ schema:
         logicalType: number
         description: "Total transaction amount"
         required: true
+        quality:
+          - type: expression
+            expression: "amount >= 0"
+            description: "big >0"
