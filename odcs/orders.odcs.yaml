@@ -26,8 +26,7 @@ models:
         description: "Total transaction amount"
         required: true
     
-    # הדרך המדויקת להזריק בדיקת SQL מותאמת אישית ש-dbt export מבין!
     quality:
       - type: "custom"
         expression: "amount >= 0"
-        description: "Verify that  order amount is not negative"
+        description: "Verify   order amount is not negative"
