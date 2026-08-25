@@ -1,27 +1,28 @@
-datacontract: "3.0.0" # הגרסה המודרנית והרשמית של הכלי!
+apiVersion: "v3.1.0"
+kind: "DataContract"
 id: "bronze-orders-contract"
+name: "Bronze Orders"
 version: "1.0.0"
+status: "active"
 
-info:
-  title: "Bronze Orders Data Contract"
-  description: "Provides verified bronze order data for analytics and reporting"
-  owner: "chavy-team"
+description:
+  purpose: "Provides verified bronze order data for analytics and reporting"
 
-# המבנה הנכון והרשמי של גרסה 3 עבור סנכרון dbt
-models:
-  order: # שם הטבלה המדויק שלכם בקובץ src_raw_data.yml
-    type: "table"
-    description: "Bronze managed table under contract protection"
-    fields:
-      order_id:
-        type: "string"
+schema:
+  - name: "source:raw_data.order" 
+    physicalType: TABLE
+    description: "Bronze managed source table under contract protection"
+    properties:
+      - name: "order_id"
+        logicalType: "string"
         description: "Primary key order id"
         required: true
         unique: true
-      user_id:
-        type: "string"
+      - name: "user_id"
+        logicalType: "string"
         description: "User reference"
         required: true
-      amount:
-        type: "number" # סוג נתונים מספרי תקני בגרסה 3
+      - name: "amount"
+        logicalType: "number"
+        description: "Total transaction amount"
         required: true
