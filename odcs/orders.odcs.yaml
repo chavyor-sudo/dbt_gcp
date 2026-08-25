@@ -1,4 +1,4 @@
-datacontract: "3.0.0" # הגרסה שה-CLI מבין הכי טוב בסנכרון dbt
+datacontract: "3.0.0"
 id: "bronze-orders-contract"
 version: "1.0.0"
 
@@ -7,21 +7,23 @@ info:
   description: "Provides verified bronze order data for analytics and reporting"
   owner: "chavy-team"
 
-models:
-  order: 
-    type: "table"
-    description: "Bronze managed table under contract protection"
-    fields:
-      order_id:
-        type: "string"
-        description: "Primary key order id"
-        required: true
-        unique: true
-      user_id:
-        type: "string"
-        description: "User reference"
-        required: true
-      amount:
-        type: "number"
-        description: "Total transaction amount"
-        required: true
+sources:
+  raw_data: # שם ה-Source המדויק שקוד ה-SQL שלך מחפש!
+    description: "Raw source database zone"
+    tables:
+      order: # שם הטבלה האמיתית שלכם
+        description: "Bronze managed table under contract protection"
+        columns:
+          order_id:
+            type: "string"
+            description: "Primary key order id"
+            required: true
+            unique: true
+          user_id:
+            type: "string"
+            description: "User reference"
+            required: true
+          amount:
+            type: "number"
+            description: "Total transaction amount"
+            required: true
