@@ -28,7 +28,6 @@ jobs:
 
       - name: Overwrite dbt Source from ODCS
         run: |
-          # פקודה זו מייצרת את מבנה ה-Sources מהחוזה ודורסת/יוצרת את הקובץ מחדש
           datacontract export --format dbt-sources odcs/orders.odcs.yaml > models/STG/src_raw_data_test.yml
 
       - name: Auto-Commit Generated dbt Schemas
