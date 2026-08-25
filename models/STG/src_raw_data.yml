@@ -1,5 +1,16 @@
 version: 2
+models:
+- name: raw_data
+  config:
+    meta:
+      data_contract: bronze-orders-contract
+  columns:
+  - name: order
+    data_tests:
+    - dbt_expectations.dbt_expectations.expect_column_values_to_be_of_type:
+        column_type: null
 
+<<<<<<< HEAD
 sources:
   - name: raw_data 
     database: "{{ 'cblab-prod' if target.name == 'production' else 'cblab-505208' }}"   
@@ -55,3 +66,5 @@ sources:
             tests:
               - not_null
         
+=======
+>>>>>>> 4181895bc21d1017a40c4704f5ec9b6ee139f0f3
