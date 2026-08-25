@@ -19,24 +19,7 @@ sources:
             tests:
               - not_null
 
-      - name: order
-        description: "Raw orders table uploaded from CSV"
-        columns:
-          - name: order_id
-            tests:
-              - unique
-              - not_null
-          - name: user_id
-            tests:
-              - not_null
-              - relationships:
-                  arguments:
-                    to: source('raw_data', 'users')
-                    field: user_id
 
-          - name: date
-            tests:
-              - not_null
 
       - name: address
         description: "Raw addresses table uploaded from "
