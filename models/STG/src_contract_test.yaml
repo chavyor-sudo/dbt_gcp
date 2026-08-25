@@ -1,0 +1,7 @@
+version: 2
+sources:
+- name: bronze-orders-contract
+  description: Provides verified bronze order data for analytics and reporting
+  tables:
+  - name: raw_data
+
