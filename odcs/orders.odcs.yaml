@@ -26,8 +26,7 @@ schema:
             logicalType: "number"
             required: true
 
-assertions:
-  - type: "sql"
-    query: "SELECT COUNT(*) FROM cblab-505208.raw_data.orders WHERE amount < 0"
-    mustBe: 0
-    description: "Verify that raw source rows have no negative amounts"
+    checks:
+      - type: "custom"
+        expression: "amount >= 0"
+        description: "Verify that raw source rows have no negative amounts"
