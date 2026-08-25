@@ -28,5 +28,5 @@ schema:
         required: true
         quality:
           - type: "sql"
-            expression: "amount >= 0"
+            query: "amount >= 0"
             description: "Verify that the order amount is not negative"
