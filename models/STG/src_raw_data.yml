@@ -54,4 +54,3 @@ sources:
           - name : city 
             tests:
               - not_null
-        
