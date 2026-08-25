@@ -8,8 +8,13 @@ status: "active"
 description:
   purpose: "Provides verified bronze order data for analytics and reporting"
 
+servers:
+  - server: "bigquery"
+    type: "bigquery"
+    project: "cblab-505208"
+    dataset: "raw_data"
 schema:
-  - name: "source:raw_data.order" 
+  - name: "order"
     physicalType: TABLE
     description: "Bronze managed source table under contract protection"
     properties:
@@ -20,9 +25,9 @@ schema:
         unique: true
       - name: "user_id"
         logicalType: "string"
-        description: "User  reference"
+        description: "User reference"
         required: true
       - name: "amount"
         logicalType: "number"
-        description: "Total as transaction amount"
+        description: "Total transaction amount"
         required: true
