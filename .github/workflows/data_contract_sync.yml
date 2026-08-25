@@ -24,7 +24,7 @@ jobs:
 
       - name: Generate dbt Assets from ODCS
         run: | 
-            datacontract dbt sync odsc/orders.odcs.yaml
+            datacontract dbt sync odcs/orders.odcs.yaml
       - name: Auto-Commit Generated dbt Schemas
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
