@@ -22,11 +22,11 @@ schema:
         logicalType: string
         description: "User reference"
         required: true
-      - name: amount
-        logicalType: number
+      - name: "amount"
+        logicalType: "number"
         description: "Total transaction amount"
         required: true
         quality:
-          - type: expression
+          - type: "sql"
             expression: "amount >= 0"
-            description: " the big >0"
+            description: "Verify that the order amount is not negative"
