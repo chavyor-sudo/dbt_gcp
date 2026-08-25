@@ -1,32 +1,33 @@
-apiVersion: v3.1.0
-kind: DataContract
-id: bronze-orders-contract
-name: Bronze Orders
-version: 1.0.0
-status: active
+apiVersion: "v3.1.0"
+kind: "DataContract"
+id: "bronze-orders-contract"
+name: "Bronze Orders"
+version: "1.0.0"
+status: "active"
 
 description:
   purpose: "Provides verified bronze order data for analytics and reporting"
 
 schema:
-  - name: stg_order
-    physicalType: TABLE
-    description: "Bronze managed table under contract protection"
+  - name: "raw_data"        
+    type: "source"          
     properties:
-      - name: order_id
-        logicalType: string
-        description: "Primary key order id"
-        required: true
-        unique: true
-      - name: user_id
-        logicalType: string
-        description: "User reference"
-        required: true
-      - name: "amount"
-        logicalType: "number"
-        description: "Total transaction amount"
-        required: true
-      quality:
-        - type: "sql"
-          query: "amount >= 0"
-          description: "Verify that the order amount is not negative"
+      - name: "orders"      
+        type: "table"
+        properties:
+          - name: "order_id"
+            logicalType: "string"
+            required: true
+            unique: true
+          - name: "user_id"
+            logicalType: "string"
+            required: true
+          - name: "amount"
+            logicalType: "number"
+            required: true
+
+quality:
+  - type: "sql"
+    query: "SELECT COUNT(*) FROM cblab-505208.raw_data.orders WHERE amount < 0"
+    mustBe: 0
+    description: "Verify that raw source source rows have no negative amounts"
