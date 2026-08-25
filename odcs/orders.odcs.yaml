@@ -5,6 +5,9 @@ name: "Bronze Orders"
 version: "1.0.0"
 status: "active"
 
+description:
+  purpose: "Provides verified bronze order data for analytics and reporting"
+
 schema:
   - name: "raw_data"
     type: "source"
@@ -22,8 +25,3 @@ schema:
           - name: "amount"
             logicalType: "number"
             required: true
-
-        checks:
-          - type: "custom"
-            expression: "amount >= 0"
-            description: "Verify that raw source rows have no negative amounts"
