@@ -26,7 +26,7 @@ schema:
         logicalType: "number"
         description: "Total transaction amount"
         required: true
-        quality:
-          - type: "sql"
-            query: "amount >= 0"
-            description: "Verify that the order amount is not negative"
+      quality:
+        - type: "sql"
+          query: "amount >= 0"
+          description: "Verify that the order amount is not negative"
