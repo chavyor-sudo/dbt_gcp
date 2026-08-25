@@ -1,32 +1,33 @@
-apiVersion: "v3.1.0"
-kind: "DataContract"
+datacontract: "3.0.0"
 id: "bronze-orders-contract"
-name: "Bronze Orders"
 version: "1.0.0"
-status: "active"
 
-description:
-  purpose: "Provides verified bronze order data for analytics and reporting"
+info:
+  title: "Bronze Orders Data Contract"
+  description: "Data contract defining bronze orders structure"
+  owner: "chavy-team"
 
-schema:
-  - name: "raw_data"
-    type: "source"
-    properties:
-      - name: "order"      
-        type: "table"
-        properties:
-          - name: "order_id"
-            logicalType: "string"
-            required: true
-            unique: true
-          - name: "user_id"
-            logicalType: "string"
-            required: true
-          - name: "amount"
-            logicalType: "number"
-            required: true
-
-    checks:
+models:
+  stg_order:
+    type: "table"
+    description: "Bronze managed table under contract protection"
+    fields:
+      order_id:
+        type: "string"
+        description: "Primary key order id"
+        required: true
+        unique: true
+      user_id:
+        type: "string"
+        description: "User reference"
+        required: true
+      amount:
+        type: "number"
+        description: "Total transaction amount"
+        required: true
+    
+    # הדרך המדויקת להזריק בדיקת SQL מותאמת אישית ש-dbt export מבין!
+    quality:
       - type: "custom"
         expression: "amount >= 0"
-        description: "Verify that a  raw source rows have no negative amounts"
+        description: "Verify that the order amount is not negative"
