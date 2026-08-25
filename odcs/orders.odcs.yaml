@@ -12,7 +12,7 @@ schema:
   - name: "raw_data"
     type: "source"
     properties:
-      - name: "orders"
+      - name: "order"      # תוקן: לשון יחיד (order) כדי שיתאים ב-100% לקובץ ה-Source שלך!
         type: "table"
         properties:
           - name: "order_id"
