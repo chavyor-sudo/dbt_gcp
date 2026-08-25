@@ -52,3 +52,25 @@ sources:
           - name: city
             tests:
               - not_null
+version: 2
+sources:
+- name: bronze-orders-contract
+  tables:
+  - name: raw_data
+    columns:
+    - name: order
+      data_tests:
+      - dbt_expectations.dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: null
+
+version: 2
+sources:
+- name: bronze-orders-contract
+  tables:
+  - name: raw_data
+    columns:
+    - name: order
+      data_tests:
+      - dbt_expectations.dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: null
+
