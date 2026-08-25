@@ -25,3 +25,8 @@ schema:
           - name: "amount"
             logicalType: "number"
             required: true
+        
+        checks:
+          - type: "custom"
+            expression: "amount >= 0"
+            description: "Verify that raw source rows have no negative amounts"
