@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'odcs/**.yaml''
+      - 'odcs/**.yaml'
 
 jobs:
   sync_contracts:
