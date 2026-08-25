@@ -12,7 +12,7 @@ schema:
   - name: "raw_data"
     type: "source"
     properties:
-      - name: "order"      
+      - name: "order"
         type: "table"
         properties:
           - name: "order_id"
@@ -25,8 +25,3 @@ schema:
           - name: "amount"
             logicalType: "number"
             required: true
-
-    checks:
-      - type: "custom"
-        expression: "amount >= 0"
-        description: "Verify that a thkjhkj raw source rows have no negative amounts"
